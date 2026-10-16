@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: resume-intelligence
+    runtime: docker
+    plan: starter            # 512 MB free tier is too small for torch + two models
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false          # set in the Render dashboard, never commit it
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: USE_LLM
+        value: "true"

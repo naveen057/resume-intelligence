@@ -1,0 +1,23 @@
+{
+  "description": "Query -> relevant-chunk labels (by substring) against the sample resume. Mix of keyword and paraphrased queries so BM25-vs-dense differences show up.",
+  "cases": [
+    {
+      "id": "sample",
+      "resume_path": "data/samples/resume_sample.txt",
+      "queries": [
+        {"query": "FastAPI", "relevant_substrings": ["fastapi"]},
+        {"query": "Where did the candidate deploy a model behind an HTTP endpoint?", "relevant_substrings": ["rest service with fastapi"]},
+        {"query": "SQL window functions", "relevant_substrings": ["window functions"]},
+        {"query": "database querying for feature creation", "relevant_substrings": ["window functions"]},
+        {"query": "semantic search with embeddings", "relevant_substrings": ["sentence transformers"]},
+        {"query": "FAISS vector index", "relevant_substrings": ["faiss"]},
+        {"query": "improved retrieval quality metrics", "relevant_substrings": ["recall@5"]},
+        {"query": "unit tests and CI automation", "relevant_substrings": ["pytest", "github actions"]},
+        {"query": "predicting which customers will leave", "relevant_substrings": ["churn"]},
+        {"query": "data cleaning on large datasets", "relevant_substrings": ["2m+ transaction"]},
+        {"query": "forecasting", "relevant_substrings": ["forecasting"]},
+        {"query": "dashboards and stakeholder reporting", "relevant_substrings": ["matplotlib dashboards"]}
+      ]
+    }
+  ]
+}

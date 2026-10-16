@@ -1,0 +1,17 @@
+Junior Data Scientist
+
+About the role
+We are looking for a Junior Data Scientist to build and ship machine learning products.
+
+Requirements
+- Strong Python and SQL skills.
+- Hands-on experience with Pandas and Scikit-learn.
+- Experience building REST APIs with FastAPI or Flask.
+- Familiarity with Docker and Git.
+- Experience with Spark for large-scale data processing.
+- Working knowledge of AWS.
+- Experience with A/B testing and statistics.
+
+Nice to have
+- Experience with LLM evaluation or RAG systems.
+- Tableau or Power BI.

@@ -1,0 +1,31 @@
+Aarav Mehta
+Bengaluru, India | aarav.mehta@example.com | github.com/aarav-mehta
+
+SUMMARY
+Junior data scientist who builds machine learning models and ships them as production APIs.
+
+EXPERIENCE
+Data Science Intern | RetailCo | Jun 2024 - Dec 2024
+- Built a customer churn model in Python with Scikit-learn and XGBoost, improving recall by 12% over the baseline.
+- Cleaned and transformed 2M+ transaction records using Pandas and NumPy.
+- Wrote SQL queries with joins and window functions on PostgreSQL to create training features.
+- Deployed the churn model as a REST service with FastAPI and Docker, serving 50 requests per second.
+- Presented weekly findings to the marketing team using Matplotlib dashboards.
+
+PROJECTS
+Resume Screening Assistant
+- Implemented semantic search over documents with Sentence Transformers and FAISS.
+- Added BM25 keyword retrieval and reciprocal rank fusion, raising Recall@5 from 0.61 to 0.78.
+- Wrote unit tests with Pytest and automated checks through GitHub Actions.
+
+Demand Forecasting
+- Trained time series forecasting models for 40 products and compared them with cross-validation.
+
+SKILLS
+Languages: Python, SQL
+Libraries: Pandas, NumPy, Scikit-learn, Matplotlib
+Tools: Git, Docker, Tableau, Linux
+
+EDUCATION
+B.Tech in Computer Science | Visvesvaraya Technological University | 2020 - 2024
+- Coursework: statistics, linear algebra, data structures.

@@ -1,0 +1,13 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip }
+      # Tests run fully offline (hashing embedder, no reranker, no LLM): no model downloads in CI.
+      - run: pip install numpy pydantic python-docx fastapi httpx python-multipart pytest
+      - run: pytest -q
+      - run: EMBEDDER_BACKEND=hashing RERANKER_BACKEND=none USE_LLM=false python -m app.evaluation.run_eval
