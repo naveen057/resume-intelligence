@@ -61,3 +61,5 @@ class Settings:
     def offline(cls) -> "Settings":
         """No model downloads, no network. Used by tests and CI."""
         return cls(embedder_backend="hashing", reranker_backend="none", use_llm=False, gemini_api_key="")
+
+
