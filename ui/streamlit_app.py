@@ -158,10 +158,10 @@ def _render_results(result: dict) -> None:
 st.markdown(
     """
     <div class="hero">
-        <div class="eyebrow">Resume Intelligence</div>
-        <h1>See how your experience fits the role.</h1>
-        <p>Compare a resume with a job description, understand which skills are supported,
-        and review the passages behind each result.</p>
+        <div class="eyebrow">RESUME INTELLIGENCE</div>
+        <h1># AI-Powered Resume &amp; Job Match Analyzer</h1>
+        <p>Analyze your resume, match your skills with job requirements, identify skill gaps,
+        and discover opportunities to strengthen your career profile.</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -242,3 +242,53 @@ if submitted:
 
 if "analysis_result" in st.session_state:
     _render_results(st.session_state["analysis_result"])
+
+st.markdown(
+    """
+    <style>
+    .footer {
+        margin-top: 50px;
+        padding: 28px 18px;
+        text-align: center;
+        border: 1px solid rgba(212, 231, 228, 0.16);
+        border-radius: 16px;
+        background: linear-gradient(120deg, #102c3b 0%, #174b52 100%);
+        color: #d4e7e4;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .footer .author {
+        color: #93c5fd;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 8px 0;
+    }
+
+    @media (max-width: 700px) {
+        .footer {
+            margin-top: 32px;
+            padding: 22px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .footer .author {
+            font-size: 15px;
+        }
+    }
+    </style>
+
+    <div class="footer">
+        <div>AI-Powered Resume &amp; Job Match Analyzer</div>
+        <div class="author">
+            Developed by Thura Venkata Naveen
+        </div>
+        <div>Built with Python · Streamlit · Machine Learning</div>
+        <div style="margin-top: 8px;">
+            © 2026 Thura Venkata Naveen. All rights reserved.
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
