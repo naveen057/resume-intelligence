@@ -108,10 +108,16 @@ def _render_results(result: dict) -> None:
     st.markdown("#### Summary")
     st.write(result["summary"])
     if not result["llm_used"]:
-        st.info(
-            "The optional AI explanation was unavailable, so this summary was generated "
-            "using the built-in fallback."
-        )
+        if result.get("llm_error"):
+            st.info(
+                "Gemini could not generate an explanation, so this summary was generated "
+                "using the built-in fallback."
+            )
+        else:
+            st.info(
+                "Gemini is not configured. Add your GEMINI_API_KEY to the project .env file, "
+                "ensure USE_LLM=true, and restart the app to enable AI explanations."
+            )
         if result.get("llm_error"):
             with st.expander("Technical details"):
                 st.code(result["llm_error"])

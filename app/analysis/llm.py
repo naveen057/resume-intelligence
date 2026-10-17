@@ -83,8 +83,9 @@ class GeminiExplainer:
 class SafeExplainer:
     """Try the LLM; on any failure fall back to the template so the API never breaks."""
 
-    def __init__(self, primary, fallback: TemplateExplainer):
+    def __init__(self, primary, fallback: TemplateExplainer, startup_error: str = ""):
         self.primary, self.fallback = primary, fallback
+        self.startup_error = startup_error
 
     def explain(self, role, findings, coverage_score) -> Explanation:
         if self.primary is not None:
@@ -94,14 +95,17 @@ class SafeExplainer:
                 out = self.fallback.explain(role, findings, coverage_score)
                 out.llm_error = f"{type(e).__name__}: {e}"[:300]
                 return out
-        return self.fallback.explain(role, findings, coverage_score)
+        out = self.fallback.explain(role, findings, coverage_score)
+        out.llm_error = self.startup_error
+        return out
 
 
 def get_explainer(settings: Settings) -> SafeExplainer:
     primary = None
+    startup_error = ""
     if settings.use_llm and settings.gemini_api_key:
         try:
             primary = GeminiExplainer(settings.gemini_api_key, settings.gemini_model)
-        except Exception:
-            primary = None
-    return SafeExplainer(primary, TemplateExplainer())
+        except Exception as e:
+            startup_error = f"{type(e).__name__}: {e}"[:300]
+    return SafeExplainer(primary, TemplateExplainer(), startup_error)

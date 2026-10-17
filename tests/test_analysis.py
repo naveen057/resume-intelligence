@@ -81,3 +81,12 @@ def test_llm_failure_falls_back_to_template():
     res = offline_pipeline().analyze(RESUME, JD)
     out = SafeExplainer(Boom(), TemplateExplainer()).explain("DS", res.findings, res.coverage_score)
     assert not out.llm_used and "quota exceeded" in out.llm_error and out.summary
+
+
+def test_llm_initialization_failure_is_reported():
+    res = offline_pipeline().analyze(RESUME, JD)
+    out = SafeExplainer(None, TemplateExplainer(), "Gemini client initialization failed").explain(
+        "DS", res.findings, res.coverage_score
+    )
+    assert not out.llm_used
+    assert out.llm_error == "Gemini client initialization failed"
