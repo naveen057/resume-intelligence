@@ -11,6 +11,29 @@ ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env", override=False)
 
 
+# Load Streamlit Cloud secrets into environment variables.
+try:
+    import streamlit as st
+
+    for key in (
+        "GEMINI_API_KEY",
+        "GEMINI_MODEL",
+        "USE_LLM",
+        "EMBEDDER_BACKEND",
+        "EMBEDDING_MODEL",
+        "RERANKER_BACKEND",
+        "RERANKER_MODEL",
+        "SEMANTIC_THRESHOLD",
+        "API_URL",
+        "MAX_UPLOAD_MB",
+    ):
+        if key in st.secrets and key not in os.environ:
+            os.environ[key] = str(st.secrets[key])
+
+except (ImportError, FileNotFoundError):
+    pass
+
+
 def _bool(name: str, default: str) -> bool:
     return os.getenv(name, default).strip().lower() in {"1", "true", "yes", "on"}
 
